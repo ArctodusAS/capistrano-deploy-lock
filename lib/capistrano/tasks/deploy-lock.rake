@@ -91,17 +91,7 @@ namespace :deploy do
     # Unexpired lock is present, so display the lock message
     puts message(fetch(:application), fetch(:stage), deploy_lock)
 
-    # Don't raise exception if current user owns the lock, and lock has an expiry time.
-    # Just sleep for a few seconds so they have a chance to cancel the deploy with Ctrl-C
-    if deploy_lock[:expire_at] && deploy_lock[:username] == ENV['USER']
-      10.downto(1) do |i|
-        Kernel.print "\r\e[0;33mDeploy lock was created by you (#{ENV['USER']}). Continuing deploy in #{i}...\e[0m"
-        sleep 1
-      end
-      puts
-    else
-      exit 1
-    end
+    exit 1
   end
 
   namespace :unlock do
