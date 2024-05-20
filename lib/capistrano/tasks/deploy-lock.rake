@@ -1,6 +1,6 @@
 set :deploy_lock_file, -> { File.join(shared_path, 'deploy-lock.yml') }
 set :deploy_lock_roles, -> { :app }
-set :default_lock_expiry, (15 * 60)
+set :default_lock_expiry, (24 * 60 * 60)
 set :deploy_lock, false
 set :lock_message, nil
 set :lock_expiry, nil
