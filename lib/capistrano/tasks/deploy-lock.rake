@@ -161,7 +161,7 @@ def message(application, stage, deploy_lock)
   if deploy_lock[:expire_at]
     message << "\n\e[0;33mLock expires at #{deploy_lock[:expire_at].localtime.strftime("%H:%M:%S")}\e[0m"
   else
-    message << "\n\e[0;33mLock must be manually removed with: cap #{stage} deploy:unlock\e[0m"
+    message << "\n\e[0;33mLock must be manually removed with: cap #{stage} deploy:unlock:default\e[0m"
   end
 
   colorize(message)
